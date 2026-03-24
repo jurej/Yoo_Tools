@@ -11,8 +11,6 @@ Thumbs.db
 vendor/bundle/
 
 # Build / package artifacts
-release/*.rbz
-release/*.zip
 *.rbe
 
 # Temp files
