@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.cursor/
+
+# Ruby / tooling
+*.log
+.bundle/
+vendor/bundle/
+
+# Build / package artifacts
+release/*.rbz
+release/*.zip
+*.rbe
+
+# Temp files
+tmp/
+temp/
+*.tmp
