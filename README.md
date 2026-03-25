@@ -1,4 +1,4 @@
-# Slope Overlay (SketchUp Extension)
+# Yoo Tools (SketchUp Extension)
 
 Repository root folder: **`Yoo_Tools`**.
 
