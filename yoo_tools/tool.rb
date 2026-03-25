@@ -158,7 +158,7 @@ module Yoo_Tools
       def cursor_id
         return @@cursor_slope_id if @@cursor_slope_id
 
-        cursor_path = File.join(__dir__, 'cursor_slope.svg')
+        cursor_path = File.join(__dir__, 'UI', 'cursor_slope.svg')
         if File.exist?(cursor_path)
           @@cursor_slope_id = UI.create_cursor(cursor_path, 3, 3)
         else

@@ -8,6 +8,7 @@ Repository root folder: **`Yoo_Tools`**.
   - **Angle (°)** relative to horizontal (0° = flat, 90° = vertical)
   - **Grade (%)** where \(grade = \tan(angle) \times 100\)
 - **Align to Axis (Coplanar)**: Moves vertices from selected faces/edges onto a plane through a picked anchor vertex, perpendicular to a chosen axis (world, current model axes, or local group axes). Optional colinear loop simplification and soft-edge dissolve between coplanar faces.
+- **Draw Line at Slope**: Draw connected line segments at a fixed slope, entered in VCB as percent or degrees.
 
 ## Requirements
 
@@ -29,16 +30,26 @@ Repository root folder: **`Yoo_Tools`**.
 
 ### Align to axis
 
-1. Select one or more **faces** and/or **edges** (same group/component context for **Local group** frame).
+1. Select one or more **faces** and/or **edges**.
 2. **Plugins → Align to Axis (Coplanar)** or **Yoo_Tools → Align to Axis (Coplanar)**.
 3. Adjust options (see overlay near cursor):
-   - **Frame**: **World**, **Local group**, or **Current axes** (model axes). Use **[** / **]** or arrow keys to cycle.
+   - **Frame**: **World** or **Current axes** (model axes). Use **[** / **]** or arrow keys to cycle.
    - **Axis**: **X**, **Y**, **Z**, or **A** for **Closest** (pick axis most aligned with average face normals). Keys **X Y Z A**.
-   - **K**: toggle **Colinear cleanup** (default on): simplifies outer/inner loops with tolerance `1e-4` model units; rebuilds faces when possible.
-   - **E**: toggle **Stray edges**: dissolves **soft** edges between two **coplanar** faces (common interior partitions).
+   - **1**: toggle **Colinear cleanup** (default on): simplifies outer/inner loops with tolerance `1e-4` model units; rebuilds faces when possible.
+   - **2**: toggle **Stray edges**.
 4. **Click** a vertex to use as the **anchor** (plane passes through it). One undo step for the whole operation.
 
 If colinear rebuild fails for a face, the operation **aborts** and the model rolls back (nothing partially applied).
+
+### Draw line at slope
+
+1. Start **Plugins → Draw Line at Slope** or **Yoo_Tools → Draw Line at Slope**.
+2. In VCB, enter slope as:
+   - **Percent**: `12%`, `-8.5%`
+   - **Degrees**: `7deg`, `-12.5deg` (or shorthand `7d`)
+3. Click first point.
+4. Click next point(s). The tool keeps clicked XY direction and auto-solves Z so each segment keeps exact slope.
+5. Positive values slope up, negative values slope down.
 
 ### Limitations
 

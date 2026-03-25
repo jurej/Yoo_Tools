@@ -3,10 +3,12 @@
 module Yoo_Tools
   EXTENSION_NAME = 'Slope Overlay'
   ALIGN_TOOL_NAME = 'Align to Axis (Coplanar)'
+  SLOPE_LINE_TOOL_NAME = 'Draw Line at Slope'
   DEBUG = true
 
   require_relative 'tool'
   require_relative 'align_tool'
+  require_relative 'slope_line_tool'
 
   def self.activate_tool
     Sketchup.active_model.select_tool(Tool.new)
@@ -14,6 +16,10 @@ module Yoo_Tools
 
   def self.activate_align_tool
     Sketchup.active_model.select_tool(AlignTool.new)
+  end
+
+  def self.activate_slope_line_tool
+    Sketchup.active_model.select_tool(SlopeLineTool.new)
   end
 
   def self.deactivate_tool
@@ -61,6 +67,9 @@ module Yoo_Tools
       plugins_menu.add_item(ALIGN_TOOL_NAME) do
         safe_call('Align tool (Plugins menu)') { activate_align_tool }
       end
+      plugins_menu.add_item(SLOPE_LINE_TOOL_NAME) do
+        safe_call('Slope line tool (Plugins menu)') { activate_slope_line_tool }
+      end
 
       UI.add_context_menu_handler do |menu|
         yoo_menu = menu.add_submenu('Yoo_Tools')
@@ -75,6 +84,9 @@ module Yoo_Tools
         end
         yoo_menu.add_item(ALIGN_TOOL_NAME) do
           safe_call('Align tool (context menu)') { activate_align_tool }
+        end
+        yoo_menu.add_item(SLOPE_LINE_TOOL_NAME) do
+          safe_call('Slope line tool (context menu)') { activate_slope_line_tool }
         end
       end
     end

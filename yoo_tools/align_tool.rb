@@ -192,7 +192,7 @@ module Yoo_Tools
     def cursor_id
       return @@cursor_align_id if @@cursor_align_id
 
-      cursor_path = File.join(__dir__, 'cursor_align.svg')
+      cursor_path = File.join(__dir__, 'UI', 'cursor_align.svg')
       if File.exist?(cursor_path)
         @@cursor_align_id = UI.create_cursor(cursor_path, 3, 3)
       else
